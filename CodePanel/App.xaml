@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:CodePanel"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <SolidColorBrush x:Key="MainAppBrush" Color="#FF00D1FF"></SolidColorBrush>
     </Application.Resources>
 </Application>

@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,22 +16,13 @@ using System.Windows.Shapes;
 namespace CodePanel
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for CodePanelControl.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class CodePanelControl : UserControl
     {
-        public MainWindow()
+        public CodePanelControl()
         {
             InitializeComponent();
-        }
-
-        
-        // Prevent closing window in any common way
-        private void MainWindow_OnClosing(object sender, CancelEventArgs e)
-        {
-#if !DEBUG
-            e.Cancel = true;
-#endif
         }
     }
 }

@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CodePanel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="350" Width="525" Closing="MainWindow_OnClosing">
     <Grid>
-        
+        <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+            <local:CodePanelControl Width="250" Height="300"/>
+        </Grid>
     </Grid>
 </Window>
