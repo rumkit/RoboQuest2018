@@ -7,11 +7,11 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="1024" Closing="MainWindow_OnClosing" PreviewMouseDown="MainWindow_OnPreviewMouseDown">
     <Grid>
-        <Grid x:Name="BluringGrid">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,50,0,0">
-                <Button Height="110" Width="210" Content="Взлом камеры" Background="{StaticResource ActionButtonTextBrush}" BorderBrush="DarkSlateGray" Foreground="DarkSlateGray"></Button>
-                <Button Height="110" Width="210" Content="Взлом андроида" Background="LightGoldenrodYellow"></Button>
-                <Button Height="110" Width="210" Content="Хранилище" Background="LightGoldenrodYellow"></Button>
+        <Grid x:Name="BluringGrid" Background="Transparent">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,50,0,0" Button.Click="ActionButton_OnClick">
+                <Button Tag="Camera" Height="110" Width="210" Content="Взлом камеры" Background="{StaticResource ActionButtonTextBrush}" BorderBrush="DarkSlateGray" Foreground="DarkSlateGray"></Button>
+                <Button Tag="Android" Height="110" Width="210" Content="Взлом андроида" Background="LightGoldenrodYellow"></Button>
+                <Button Tag="Vault" Height="110" Width="210" Content="Хранилище" Background="LightGoldenrodYellow"></Button>
             </StackPanel>
             <Grid VerticalAlignment="Bottom"  HorizontalAlignment="Center" Margin="0,0,0,10">
                 <StackPanel Orientation="Vertical">
@@ -23,7 +23,7 @@
         <Grid x:Name="ErrorGrid" Background="Transparent" Visibility="Collapsed">
             <Grid  Margin ="0,150,0,150" VerticalAlignment="Stretch" Background="Red">
                 <TextBlock Text="Неверный пароль" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="48" Foreground="{StaticResource MessageForegroundBrush}"></TextBlock>
-                <Button x:Name="CloseErrorGridButton" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,10" Width="80" Height="80" Content="OK" Foreground="{StaticResource MessageForegroundBrush}" BorderBrush="{StaticResource MessageForegroundBrush}" Click="Button_Click"/>
+                <Button x:Name="CloseErrorGridButton" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,10" Width="80" Height="80" Content="OK" Foreground="{StaticResource MessageForegroundBrush}" BorderBrush="{StaticResource MessageForegroundBrush}" Click="ErrorClose_OnClick"/>
             </Grid>
         </Grid>
     </Grid>
