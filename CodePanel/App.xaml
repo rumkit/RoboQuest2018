@@ -7,6 +7,7 @@
         <Color x:Key="MainAppColor">#FF00D1FF</Color>
         <SolidColorBrush x:Key="MainAppBrush" Color="{StaticResource MainAppColor}"></SolidColorBrush>
         <SolidColorBrush x:Key="MessageForegroundBrush" Color="WhiteSmoke"></SolidColorBrush>
+        <SolidColorBrush x:Key="ActionButtonTextBrush" Color="#FFFF4500"></SolidColorBrush>
         
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"></BooleanToVisibilityConverter>
 
@@ -20,9 +21,10 @@
                 <Setter.Value>
                     <ControlTemplate>
                         <Grid Margin="5">
-                            <Rectangle Margin="1" x:Name="FeedbackRectangle" RadiusX="10" RadiusY="10" Fill="{TemplateBinding BorderBrush}" Opacity="0"/>
                             <Rectangle RadiusX="10" RadiusY="10" Stroke="{TemplateBinding BorderBrush}" Fill="{TemplateBinding Background}" StrokeThickness="5"/>
-                            <TextBlock Text="{TemplateBinding Button.Content}" FontWeight="Bold" FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{TemplateBinding Foreground}"/>
+                            <Rectangle Margin="1" x:Name="FeedbackRectangle" RadiusX="10" RadiusY="10" Fill="{TemplateBinding BorderBrush}" Opacity="0"/>
+                            <TextBlock Margin="3" TextWrapping="Wrap" Text="{TemplateBinding Button.Content}" FontWeight="Bold" FontSize="32" 
+                                       HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Foreground="{TemplateBinding Foreground}"/>
                         </Grid>
                         <ControlTemplate.Triggers>
                             <EventTrigger RoutedEvent="PreviewMouseDown">
@@ -34,7 +36,7 @@
             </Setter>
             <Setter Property="Background" Value="Transparent"></Setter>
             <Setter Property="Foreground" Value="{StaticResource MainAppBrush}"></Setter>
-            <Setter Property="BorderBrush" Value="{Binding ElementName=KeyPadControl, Path=BorderBrush}"></Setter>
+            <Setter Property="BorderBrush" Value="{StaticResource MainAppBrush}"></Setter>
         </Style>
     </Application.Resources>
 </Application>
