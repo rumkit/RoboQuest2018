@@ -28,15 +28,6 @@ namespace CodePanel
             (this.Content as FrameworkElement).DataContext = this;
         }
 
-        public static readonly DependencyProperty ButtonFeedbackBrushProperty = DependencyProperty.Register(
-            "ButtonFeedbackBrush", typeof(Brush), typeof(KeyPad), new PropertyMetadata(Brushes.Blue));
-
-        public Brush ButtonFeedbackBrush
-        {
-            get { return (Brush) GetValue(ButtonFeedbackBrushProperty); }
-            set { SetValue(ButtonFeedbackBrushProperty, value); }
-        }
-
         public static readonly DependencyProperty MaxPasswordLengthProperty = DependencyProperty.Register(
             "MaxPasswordLength", typeof(int), typeof(KeyPad), new PropertyMetadata(4));
 

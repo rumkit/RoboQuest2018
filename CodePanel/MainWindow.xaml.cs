@@ -42,5 +42,10 @@ namespace CodePanel
             if (e.ChangedButton != MouseButton.Left)
                 e.Handled = true;
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ErrorGrid.Visibility = Visibility.Collapsed;
+        }
     }
 }

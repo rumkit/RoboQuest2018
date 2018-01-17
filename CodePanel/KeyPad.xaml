@@ -6,32 +6,6 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="390" d:DesignWidth="280">
-    <Control.Resources>
-        <Storyboard x:Key="ButtonMouseDownStoryBoard">
-            <DoubleAnimation Storyboard.TargetProperty="Opacity" Storyboard.TargetName="FeedbackRectangle" To="1" Duration="0:0:0.1"/>
-            <DoubleAnimation Storyboard.TargetProperty="Opacity" Storyboard.TargetName="FeedbackRectangle" To="0" Duration="0:0:0.4"/>
-        </Storyboard>
-        <Style TargetType="{x:Type Button}">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate>
-                        <Grid Margin="5">
-                            <Rectangle Margin="1" x:Name="FeedbackRectangle" RadiusX="10" RadiusY="10" Fill="{Binding ButtonFeedbackBrush}" Opacity="0"/>
-                            <Rectangle RadiusX="10" RadiusY="10" Stroke="{TemplateBinding BorderBrush}" Fill="{TemplateBinding Background}" StrokeThickness="5"/>
-                            <TextBlock Text="{TemplateBinding Button.Content}" FontWeight="Bold" FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{Binding Foreground}"/>
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <EventTrigger RoutedEvent="PreviewMouseDown">
-                                <BeginStoryboard Storyboard="{StaticResource ButtonMouseDownStoryBoard}"></BeginStoryboard>
-                            </EventTrigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Setter Property="Background" Value="Transparent"></Setter>
-            <Setter Property="BorderBrush" Value="{Binding ElementName=KeyPadControl, Path=BorderBrush}"></Setter>
-        </Style>
-    </Control.Resources>
     <Grid>
         <UniformGrid Columns="3" Button.Click="ButtonBase_OnClick">
             <Button Content="1"/>
