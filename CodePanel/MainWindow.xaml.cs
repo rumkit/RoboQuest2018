@@ -28,12 +28,19 @@ namespace CodePanel
         }
 
         
-        // Prevent closing window in any common way
+        // Prevents closing window in any common way
         private void MainWindow_OnClosing(object sender, CancelEventArgs e)
         {
 #if !DEBUG
             e.Cancel = true;
 #endif
+        }
+
+        // Prevents all clicks except LMB
+        private void MainWindow_OnPreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton != MouseButton.Left)
+                e.Handled = true;
         }
     }
 }

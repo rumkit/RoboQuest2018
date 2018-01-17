@@ -5,10 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CodePanel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525" Closing="MainWindow_OnClosing">
+        Title="MainWindow" Height="600" Width="1280" Closing="MainWindow_OnClosing" PreviewMouseDown="MainWindow_OnPreviewMouseDown">
     <Grid>
-        <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
-            <local:CodePanelControl Width="250" Height="300"/>
+        <Grid x:Name="BluringGrid">
+            <Grid.Effect>
+                <BlurEffect x:Name="BlurEffect"  Radius="0" KernelType="Gaussian"></BlurEffect>
+            </Grid.Effect>
+            <Grid VerticalAlignment="Bottom"  HorizontalAlignment="Center">
+                <StackPanel Orientation="Vertical">
+                    <local:PasswordBox Margin="10" Password="{Binding Password, ElementName=KeyPad}" BorderBrush="{StaticResource MainAppBrush}" Foreground="{StaticResource MainAppBrush}"/>
+                    <local:KeyPad x:Name="KeyPad" Width="250" Height="300" BorderBrush="{StaticResource MainAppBrush}" Foreground="{StaticResource MainAppBrush}" OKButtonVisible="False" ButtonFeedbackBrush="{StaticResource MainAppBrush}"/>
+                </StackPanel>
+            </Grid>
         </Grid>
+        <!--<Grid x:Name="ErrorGrid" Margin ="0,150,0,150" VerticalAlignment="Stretch" Background="Red"></Grid>-->
     </Grid>
 </Window>

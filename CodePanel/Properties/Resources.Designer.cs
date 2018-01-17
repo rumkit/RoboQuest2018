@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CodePanel.Properties
+namespace KeyPad.Properties
 {
 
 

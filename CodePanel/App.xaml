@@ -4,6 +4,8 @@
              xmlns:local="clr-namespace:CodePanel"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <SolidColorBrush x:Key="MainAppBrush" Color="#FF00D1FF"></SolidColorBrush>
+        <Color x:Key="MainAppColor">#FF00D1FF</Color>
+        <SolidColorBrush x:Key="MainAppBrush" Color="{StaticResource MainAppColor}"></SolidColorBrush>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"></BooleanToVisibilityConverter>
     </Application.Resources>
 </Application>
