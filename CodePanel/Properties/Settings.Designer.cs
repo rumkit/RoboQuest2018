@@ -68,5 +68,32 @@ namespace CodePanel.Properties {
                 return ((string[])(this["vaultPasswords"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Защита контура наблюдения снята/Включить экран")]
+        public string cameraSuccessMessage {
+            get {
+                return ((string)(this["cameraSuccessMessage"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Доступ в хранилище разрешен/Под столом в левом углу")]
+        public string vaultSuccessMessage {
+            get {
+                return ((string)(this["vaultSuccessMessage"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Сигнал управления перехвачен/Починка робота-разведчика")]
+        public string androidSuccessMessage {
+            get {
+                return ((string)(this["androidSuccessMessage"]));
+            }
+        }
     }
 }

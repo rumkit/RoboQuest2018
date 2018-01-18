@@ -29,9 +29,16 @@
             </Grid>
         </Grid>
         <Grid x:Name="ErrorGrid" Background="Transparent" Visibility="Collapsed" >
-            <Grid  Margin ="0,150,0,150" VerticalAlignment="Stretch" Background="#FFC50000">
+            <Grid  Margin ="0,150,0,150" VerticalAlignment="Stretch" Background="{StaticResource ErrorBrush}">
                 <TextBlock Text="Неверный пароль"  Style="{StaticResource MessagesText}" Margin="0,50,0,0" VerticalAlignment="Top"/>
                 <Button x:Name="CloseErrorGridButton" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,50" Width="80" Height="80" Content="OK" Foreground="{StaticResource MessageForegroundBrush}" BorderBrush="{StaticResource MessageForegroundBrush}" Click="ErrorClose_OnClick"/>
+            </Grid>
+        </Grid>
+        <Grid x:Name="SuccessGrid" Background="Transparent" Visibility="Collapsed" >
+            <Grid  Margin ="0,150,0,150" VerticalAlignment="Stretch" Background="{StaticResource SuccessBrush}">
+                <TextBlock x:Name="SuccessMessage1" Text="Упех"  Style="{StaticResource MessagesText}" Margin="0,20,0,0" VerticalAlignment="Top"/>
+                <TextBlock x:Name="SuccessMessage2" Text="Что-то там произошло"  Style="{StaticResource MessagesText}" Margin="0,90,0,0" VerticalAlignment="Top"/>
+                <Button x:Name="CloseSuccessGridButton" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,20" Width="80" Height="80" Content="OK" Foreground="{StaticResource MessageForegroundBrush}" BorderBrush="{StaticResource MessageForegroundBrush}" Click="SuccessClose_OnClick"/>
             </Grid>
         </Grid>
         <Grid x:Name="ProgressGrid"  Margin ="0,150,0,150" VerticalAlignment="Stretch" Background="#FF747474" Visibility="Collapsed">

@@ -26,5 +26,14 @@
   &lt;string&gt;2222&lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
+    <Setting Name="cameraSuccessMessage" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Защита контура наблюдения снята/Включить экран</Value>
+    </Setting>
+    <Setting Name="vaultSuccessMessage" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Доступ в хранилище разрешен/Под столом в левом углу</Value>
+    </Setting>
+    <Setting Name="androidSuccessMessage" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Сигнал управления перехвачен/Починка робота-разведчика</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

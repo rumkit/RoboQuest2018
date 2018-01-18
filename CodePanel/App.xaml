@@ -13,6 +13,8 @@
         <SolidColorBrush x:Key="MessageForegroundBrush" Color="WhiteSmoke"/>
         <SolidColorBrush x:Key="ActionButtonTextBrush" Color="#FFFF4500"/>
         <SolidColorBrush x:Key="DisabledBrush" Color="{StaticResource DisabledColor}"/>
+        <SolidColorBrush x:Key="ErrorBrush" Color="#FFC50000"></SolidColorBrush>
+        <SolidColorBrush x:Key="SuccessBrush" Color="#FF4D7A00"></SolidColorBrush>
         
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"></BooleanToVisibilityConverter>
 

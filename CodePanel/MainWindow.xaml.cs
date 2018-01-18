@@ -58,26 +58,36 @@ namespace CodePanel
             BluringGrid.Effect = null;
         }
 
+        private void SuccessClose_OnClick(object sender, RoutedEventArgs e)
+        {
+            SuccessGrid.Visibility = Visibility.Collapsed;
+            BluringGrid.Effect = null;
+        }
+
         private void ActionButton_OnClick(object sender, RoutedEventArgs e)
         {
             IList<string> passwordSource = null;
             var button = e.OriginalSource as Button;
+            string successMessage = string.Empty;
             switch (button.Tag)
             {
                 case "Android":
                     passwordSource = _androidPasswords;
+                    successMessage = Properties.Settings.Default.androidSuccessMessage;
                     break;
                 case "Camera":
                     passwordSource = _cameraPasswords;
+                    successMessage = Properties.Settings.Default.cameraSuccessMessage;
                     break;
                 case "Vault":
+                    successMessage = Properties.Settings.Default.vaultSuccessMessage;
                     passwordSource = _vaultPasswords;
                     break;
             }
 
             if (CheckPassword(passwordSource, KeyPad.Password))
             {
-                DisplayProgress(DisplaySuccess);
+                DisplayProgress(()=>DisplaySuccess(successMessage));
             }
             else
             {
@@ -114,9 +124,15 @@ namespace CodePanel
             });
         }
 
-        private void DisplaySuccess()
+        private void DisplaySuccess(string successMessage)
         {
-            MessageBox.Show("Success");
+            var messages = successMessage.Split(new[] {'/'}, StringSplitOptions.None);
+            Dispatcher.Invoke(() =>
+            {
+                SuccessMessage1.Text = messages[0];
+                SuccessMessage2.Text = messages[1];
+                SuccessGrid.Visibility = Visibility.Visible;
+            });
         }
     }
 }
