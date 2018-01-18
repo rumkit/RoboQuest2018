@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CodePanel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="1024" Closing="MainWindow_OnClosing" PreviewMouseDown="MainWindow_OnPreviewMouseDown">
+        Title="OSS Console" Height="800" Width="1280" Closing="MainWindow_OnClosing" PreviewMouseDown="MainWindow_OnPreviewMouseDown" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -17,33 +17,33 @@
         <Grid x:Name="BluringGrid" Background="Transparent">
             <StackPanel x:Name="ActionButtonPanel" IsEnabled="{Binding ElementName=KeyPad, Path=Password, Converter={StaticResource StringLengthCheckConverter}, UpdateSourceTrigger=PropertyChanged}"
                         Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,50,0,0" Button.Click="ActionButton_OnClick">
-                <Button Tag="Camera" Height="110" Width="210" Content="Взлом камеры"></Button>
-                <Button Tag="Android" Height="110" Width="210" Content="Взлом андроида" ></Button>
-                <Button Tag="Vault" Height="110" Width="210" Content="Хранилище" ></Button>
+                <Button Tag="Camera" Height="150" Width="400" Content="Взлом камеры"></Button>
+                <Button Tag="Android" Height="150" Width="400" Content="Взлом андроида" ></Button>
+                <Button Tag="Vault" Height="150" Width="400" Content="Хранилище" ></Button>
             </StackPanel>
-            <Grid VerticalAlignment="Bottom"  HorizontalAlignment="Center" Margin="0,0,0,10">
+            <Grid VerticalAlignment="Bottom"  HorizontalAlignment="Center" Margin="0,0,0,50">
                 <StackPanel Orientation="Vertical">
-                    <local:PasswordBox Margin="10" Password="{Binding Password, ElementName=KeyPad}" BorderBrush="{StaticResource MainAppBrush}" Foreground="{StaticResource MainAppBrush}"/>
-                    <local:KeyPad x:Name="KeyPad" Width="250" Height="300" BorderBrush="{StaticResource MainAppBrush}" Foreground="{StaticResource MainAppBrush}" OKButtonVisible="False"/>
+                    <local:PasswordBox Padding="10,0,10,0" Margin="10" Password="{Binding Password, ElementName=KeyPad}" BorderBrush="{StaticResource MainAppBrush}" Foreground="{StaticResource MainAppBrush}" Width="{Binding ActualWidth, ElementName=KeyPad, Mode=OneWay}"/>
+                    <local:KeyPad x:Name="KeyPad" Width="300" Height="400" BorderBrush="{StaticResource MainAppBrush}" Foreground="{StaticResource MainAppBrush}" OKButtonVisible="False"/>
                 </StackPanel>
             </Grid>
         </Grid>
         <Grid x:Name="ErrorGrid" Background="Transparent" Visibility="Collapsed" >
-            <Grid  Margin ="0,150,0,150" VerticalAlignment="Stretch" Background="{StaticResource ErrorBrush}">
-                <TextBlock Text="Неверный пароль"  Style="{StaticResource MessagesText}" Margin="0,50,0,0" VerticalAlignment="Top"/>
-                <Button x:Name="CloseErrorGridButton" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,50" Width="80" Height="80" Content="OK" Foreground="{StaticResource MessageForegroundBrush}" BorderBrush="{StaticResource MessageForegroundBrush}" Click="ErrorClose_OnClick"/>
+            <Grid  Margin="0,200,0,200" VerticalAlignment="Stretch" Background="{StaticResource ErrorBrush}">
+                <TextBlock Text="Неверный пароль"  Style="{StaticResource MessagesText}" Margin="0,80,0,0" VerticalAlignment="Top"/>
+                <Button VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,80" Width="130" Height="110" Content="OK" Foreground="{StaticResource MessageForegroundBrush}" BorderBrush="{StaticResource MessageForegroundBrush}" Click="ErrorClose_OnClick"/>
             </Grid>
         </Grid>
         <Grid x:Name="SuccessGrid" Background="Transparent" Visibility="Collapsed" >
-            <Grid  Margin ="0,150,0,150" VerticalAlignment="Stretch" Background="{StaticResource SuccessBrush}">
-                <TextBlock x:Name="SuccessMessage1" Text="Упех"  Style="{StaticResource MessagesText}" Margin="0,20,0,0" VerticalAlignment="Top"/>
-                <TextBlock x:Name="SuccessMessage2" Text="Что-то там произошло"  Style="{StaticResource MessagesText}" Margin="0,90,0,0" VerticalAlignment="Top"/>
-                <Button x:Name="CloseSuccessGridButton" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,20" Width="80" Height="80" Content="OK" Foreground="{StaticResource MessageForegroundBrush}" BorderBrush="{StaticResource MessageForegroundBrush}" Click="SuccessClose_OnClick"/>
+            <Grid  Margin ="0,200,0,200" VerticalAlignment="Stretch" Background="{StaticResource SuccessBrush}">
+                <TextBlock x:Name="SuccessMessage1" Text="Упех"  Style="{StaticResource MessagesText}" Margin="0,40,0,0" VerticalAlignment="Top" />
+                <TextBlock x:Name="SuccessMessage2" Text="Что-то там произошло"  Style="{StaticResource MessagesText}" Margin="0,120,0,0" VerticalAlignment="Top" />
+                <Button VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,40" Width="130" Height="110" Content="OK" Foreground="{StaticResource MessageForegroundBrush}" BorderBrush="{StaticResource MessageForegroundBrush}" Click="SuccessClose_OnClick"/>
             </Grid>
         </Grid>
-        <Grid x:Name="ProgressGrid"  Margin ="0,150,0,150" VerticalAlignment="Stretch" Background="#FF747474" Visibility="Collapsed">
+        <Grid x:Name="ProgressGrid"  Margin ="0,200,0,200" Opacity="0.7" VerticalAlignment="Stretch" Background="#FF747474" Visibility="Collapsed">
             <TextBlock Margin="0,-50,0,0" Text="Подключение через ComSat" Style="{StaticResource MessagesText}"/>
-            <ProgressBar x:Name="ConnectionProgressBar" Margin="0,50,0,0" Width="650" Height="10" Value="0" Background="Transparent" Maximum="{Binding TicksToWait}"/>
+            <ProgressBar x:Name="ConnectionProgressBar" Margin="0,100,0,0" Width="650" Height="10" Value="0" Background="Transparent" Maximum="{Binding TicksToWait}"/>
         </Grid>
     </Grid>
 </Window>

@@ -22,10 +22,12 @@ namespace CodePanel
             DataContext = this;
         }
 
+
         private List<string> _vaultPasswords = new List<string>(Properties.Settings.Default.vaultPasswords);
         private List<string> _androidPasswords = new List<string>(Properties.Settings.Default.androidPasswords);
         private List<string> _cameraPasswords = new List<string>(Properties.Settings.Default.cameraPasswords);
 
+        // 1 Tick is 0.1s
         public int TicksToWait => Properties.Settings.Default.wrongPasswordTimeout * 10;
 
         // Checks password and removes it from source
@@ -64,6 +66,7 @@ namespace CodePanel
             BluringGrid.Effect = null;
         }
 
+        // Choose action from button's tag, checks password and displays result
         private void ActionButton_OnClick(object sender, RoutedEventArgs e)
         {
             IList<string> passwordSource = null;
@@ -96,6 +99,7 @@ namespace CodePanel
             KeyPad.ClearPassword();
         }
 
+        // Displays fake progress until progressbar is full, then calls continueWith callback
         private void DisplayProgress(Action continueWith)
         {
             BluringGrid.Effect = new BlurEffect() { Radius = 12, KernelType = KernelType.Gaussian };

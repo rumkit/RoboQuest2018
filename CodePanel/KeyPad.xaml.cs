@@ -15,6 +15,8 @@ namespace CodePanel
             (this.Content as FrameworkElement).DataContext = this;
         }
 
+        #region dependency props
+
         public static readonly DependencyProperty MaxPasswordLengthProperty = DependencyProperty.Register(
             "MaxPasswordLength", typeof(int), typeof(KeyPad), new PropertyMetadata(4));
 
@@ -54,6 +56,8 @@ namespace CodePanel
             set { SetValue(DeleteButtonVisibleProperty, value); }
         }
 
+        #endregion
+
        
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
@@ -61,6 +65,7 @@ namespace CodePanel
             ProcessInput(button.Content.ToString());
         }
 
+        // handles all buttons' input
         private void ProcessInput(string input)
         {
             switch (input)
@@ -77,12 +82,14 @@ namespace CodePanel
             }
         }
 
+        // removes 1 symbol from end
         private void RemoveSymbol()
         {
             if (Password.Length > 0)
                 Password = Password.Remove(Password.Length - 1);
         }
 
+        // adds one symbol to end
         private void AddSymbol(string input)
         {
             if (Password.Length < MaxPasswordLength)

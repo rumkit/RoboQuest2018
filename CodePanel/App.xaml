@@ -43,8 +43,8 @@
                             </VisualStateManager.VisualStateGroups>
                             <Rectangle x:Name="ButtonBaseRectangle" RadiusX="10" RadiusY="10" Stroke="{TemplateBinding BorderBrush}" Fill="{TemplateBinding Background}" StrokeThickness="5"/>
                             <Rectangle Margin="1" x:Name="FeedbackRectangle" RadiusX="10" RadiusY="10" Fill="{TemplateBinding BorderBrush}" Opacity="0"/>
-                            <TextBlock x:Name="ContentBlock" TextWrapping="Wrap" LineHeight="30" Text="{TemplateBinding Button.Content}" FontWeight="Bold" FontSize="32" 
-                                       HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Foreground="{TemplateBinding Foreground}" LineStackingStrategy="BlockLineHeight"/>
+                            <TextBlock x:Name="ContentBlock" TextWrapping="Wrap" Text="{TemplateBinding Button.Content}" FontWeight="Bold" FontSize="64" 
+                                       HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Foreground="{TemplateBinding Foreground}" LineStackingStrategy="BlockLineHeight" LineHeight="55"/>
                         </Grid>
                         <ControlTemplate.Triggers>
                             <EventTrigger RoutedEvent="PreviewMouseDown">
@@ -59,10 +59,10 @@
             <Setter Property="BorderBrush" Value="{StaticResource MainAppBrush}"></Setter>
         </Style>
         
-        <!-- TextBloks -->
+        <!-- TextBlocks -->
         <Style x:Key="MessagesText" TargetType="{x:Type TextBlock}">
             <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="FontSize" Value="48"/>
+            <Setter Property="FontSize" Value="72"/>
             <Setter Property="Foreground" Value="{StaticResource MessageForegroundBrush}"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>

@@ -89,7 +89,7 @@ namespace CodePanel.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Сигнал управления перехвачен/Починка робота-разведчика")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Сигнал управления перехвачен/Ремонт робота-разведчика")]
         public string androidSuccessMessage {
             get {
                 return ((string)(this["androidSuccessMessage"]));
