@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
 using System.Threading.Tasks;
@@ -18,11 +19,14 @@ namespace CodePanel
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = this;
         }
 
         private List<string> _vaultPasswords = new List<string>(Properties.Settings.Default.vaultPasswords);
         private List<string> _androidPasswords = new List<string>(Properties.Settings.Default.androidPasswords);
         private List<string> _cameraPasswords = new List<string>(Properties.Settings.Default.cameraPasswords);
+
+        public int TicksToWait => Properties.Settings.Default.wrongPasswordTimeout * 10;
 
         // Checks password and removes it from source
         private bool CheckPassword(IList<string> passwordSource, string password)
@@ -73,35 +77,40 @@ namespace CodePanel
 
             if (CheckPassword(passwordSource, KeyPad.Password))
             {
-                DisplaySuccess();
+                DisplayProgress(DisplaySuccess);
             }
             else
             {
-                DisplayError();
+                DisplayProgress(DisplayError);
             }
             KeyPad.ClearPassword();
         }
 
-        private void DisplayError()
+        private void DisplayProgress(Action continueWith)
         {
-            CloseErrorGridButton.IsEnabled = false;
-            ErrorGrid.Visibility = Visibility.Visible;
-            BluringGrid.Effect = new BlurEffect() {Radius = 12, KernelType = KernelType.Gaussian};
-            
-            var coolDownTask = Task.Run(() =>
+            BluringGrid.Effect = new BlurEffect() { Radius = 12, KernelType = KernelType.Gaussian };
+            Task.Run(() =>
             {
-                for (int i = Properties.Settings.Default.wrongPasswordTimeout; i > 0; i--)
+                Dispatcher.Invoke(() => ProgressGrid.Visibility = Visibility.Visible);
+                for (int i = 0; i < TicksToWait; i++)
                 {
-                    var i1 = i;
-                    Dispatcher.Invoke( ()=> CloseErrorGridButton.Content = i1.ToString(), DispatcherPriority.DataBind);
-                    Thread.Sleep(1000);
+                    int i1 = i;
+                    Dispatcher.Invoke(() => ConnectionProgressBar.Value = i1, DispatcherPriority.DataBind);
+                    Thread.Sleep(100);
+
                 }
 
-                Dispatcher.Invoke(() =>
-                {
-                    CloseErrorGridButton.Content = "OK";
-                    CloseErrorGridButton.IsEnabled = true;
-                });
+                Dispatcher.Invoke(() => ConnectionProgressBar.Value = 0);
+                Dispatcher.Invoke(() => ProgressGrid.Visibility = Visibility.Hidden);
+                continueWith();
+            });
+        }
+
+        private void DisplayError()
+        {
+            Dispatcher.Invoke(() =>
+            {
+                ErrorGrid.Visibility = Visibility.Visible;
             });
         }
 

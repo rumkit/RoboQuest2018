@@ -4,10 +4,15 @@
              xmlns:local="clr-namespace:CodePanel"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+
+        <local:StringLengthCheckConverter x:Key="StringLengthCheckConverter"/>
+
         <Color x:Key="MainAppColor">#FF00D1FF</Color>
-        <SolidColorBrush x:Key="MainAppBrush" Color="{StaticResource MainAppColor}"></SolidColorBrush>
-        <SolidColorBrush x:Key="MessageForegroundBrush" Color="WhiteSmoke"></SolidColorBrush>
-        <SolidColorBrush x:Key="ActionButtonTextBrush" Color="#FFFF4500"></SolidColorBrush>
+        <Color x:Key="DisabledColor">#FFBDBDBD</Color>
+        <SolidColorBrush x:Key="MainAppBrush" Color="{StaticResource MainAppColor}"/>
+        <SolidColorBrush x:Key="MessageForegroundBrush" Color="WhiteSmoke"/>
+        <SolidColorBrush x:Key="ActionButtonTextBrush" Color="#FFFF4500"/>
+        <SolidColorBrush x:Key="DisabledBrush" Color="{StaticResource DisabledColor}"/>
         
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"></BooleanToVisibilityConverter>
 
@@ -21,10 +26,23 @@
                 <Setter.Value>
                     <ControlTemplate>
                         <Grid Margin="5">
-                            <Rectangle RadiusX="10" RadiusY="10" Stroke="{TemplateBinding BorderBrush}" Fill="{TemplateBinding Background}" StrokeThickness="5"/>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualStateGroup.States>
+                                        <VisualState x:Name="Normal"/>
+                                        <VisualState x:Name="Disabled">
+                                            <Storyboard>
+                                                <ColorAnimation Storyboard.TargetName="ButtonBaseRectangle" Storyboard.TargetProperty="Stroke.(SolidColorBrush.Color)" To="{StaticResource DisabledColor}" Duration="0"/>
+                                                <ColorAnimation Storyboard.TargetName="ContentBlock" Storyboard.TargetProperty="Foreground.(SolidColorBrush.Color)" To="{StaticResource DisabledColor}" Duration="0"/>
+                                            </Storyboard>
+                                        </VisualState>
+                                    </VisualStateGroup.States>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Rectangle x:Name="ButtonBaseRectangle" RadiusX="10" RadiusY="10" Stroke="{TemplateBinding BorderBrush}" Fill="{TemplateBinding Background}" StrokeThickness="5"/>
                             <Rectangle Margin="1" x:Name="FeedbackRectangle" RadiusX="10" RadiusY="10" Fill="{TemplateBinding BorderBrush}" Opacity="0"/>
-                            <TextBlock Margin="3" TextWrapping="Wrap" Text="{TemplateBinding Button.Content}" FontWeight="Bold" FontSize="32" 
-                                       HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Foreground="{TemplateBinding Foreground}"/>
+                            <TextBlock x:Name="ContentBlock" TextWrapping="Wrap" LineHeight="30" Text="{TemplateBinding Button.Content}" FontWeight="Bold" FontSize="32" 
+                                       HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Foreground="{TemplateBinding Foreground}" LineStackingStrategy="BlockLineHeight"/>
                         </Grid>
                         <ControlTemplate.Triggers>
                             <EventTrigger RoutedEvent="PreviewMouseDown">
@@ -38,5 +56,15 @@
             <Setter Property="Foreground" Value="{StaticResource MainAppBrush}"></Setter>
             <Setter Property="BorderBrush" Value="{StaticResource MainAppBrush}"></Setter>
         </Style>
+        
+        <!-- TextBloks -->
+        <Style x:Key="MessagesText" TargetType="{x:Type TextBlock}">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="48"/>
+            <Setter Property="Foreground" Value="{StaticResource MessageForegroundBrush}"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+
     </Application.Resources>
 </Application>
