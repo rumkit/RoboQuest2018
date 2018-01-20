@@ -36,7 +36,7 @@ namespace CodePanel.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfString xmlns:xsi=\"http://www.w3." +
             "org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\r\n  <s" +
-            "tring>1111</string>\r\n</ArrayOfString>")]
+            "tring>0138</string>\r\n  <string>0985</string>\r\n</ArrayOfString>")]
         public string[] cameraPasswords {
             get {
                 return ((string[])(this["cameraPasswords"]));
@@ -47,10 +47,10 @@ namespace CodePanel.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
 <ArrayOfString xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
-  <string>9999</string>
-  <string>8888</string>
-  <string>7777</string>
-  <string>6666</string>
+  <string>6585</string>
+  <string>0975</string>
+  <string>1247</string>
+  <string>3276</string>
 </ArrayOfString>")]
         public string[] androidPasswords {
             get {
@@ -62,7 +62,7 @@ namespace CodePanel.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfString xmlns:xsi=\"http://www.w3." +
             "org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\r\n  <s" +
-            "tring>2222</string>\r\n</ArrayOfString>")]
+            "tring>9385</string>\r\n  <string>4851</string>\r\n</ArrayOfString>")]
         public string[] vaultPasswords {
             get {
                 return ((string[])(this["vaultPasswords"]));
@@ -80,7 +80,7 @@ namespace CodePanel.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Доступ в хранилище разрешен/Под столом в левом углу")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Доступ в хранилище разрешен/Под столом у окна")]
         public string vaultSuccessMessage {
             get {
                 return ((string)(this["vaultSuccessMessage"]));

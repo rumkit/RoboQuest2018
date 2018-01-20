@@ -16,10 +16,27 @@ namespace CodePanel
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        Thread _supressPowerSavingThread;
+
         public MainWindow()
         {
             InitializeComponent();
             DataContext = this;
+            _supressPowerSavingThread = new Thread(SupressPowerSavingRoutine) { IsBackground = true };
+            _supressPowerSavingThread.Start();
+        }
+
+        // Prevents PC from going to powersaving
+        private void SupressPowerSavingRoutine()
+        {
+            using (var powerManager = new PowerManager(ExecutionState.SystemRequired | ExecutionState.DisplayRequired, isContinuous: true))
+            {
+                while (true)
+                {
+                    Thread.Sleep(TimeSpan.FromMinutes(1));
+                }
+            }
         }
 
 

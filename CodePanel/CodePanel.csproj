@@ -53,6 +53,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ExecutionState.cs" />
+    <Compile Include="PowerManager.cs" />
     <Compile Include="StringLengthCheckConverter.cs" />
     <Compile Include="PasswordBox.xaml.cs">
       <DependentUpon>PasswordBox.xaml</DependentUpon>
